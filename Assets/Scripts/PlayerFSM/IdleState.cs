@@ -9,7 +9,6 @@ public class IdleState : FSMState
     {
         player = obj.GetComponent<PlayerController>();
         rb = obj.GetComponent<Rigidbody2D>();
-        Debug.Log("IDLE enter");
     }
 
     public override void UpdateState(float delta)

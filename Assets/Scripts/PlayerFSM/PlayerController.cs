@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        CacheComponent();
         _fsm.ChangeState(new IdleState());
     }
 
@@ -75,7 +76,10 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(input.x) >= 0.1f || Mathf.Abs(input.y) >= 0.1f)
         {
             _rigidbody.linearVelocity = new Vector2(input.x, input.y) * moveSpeed;
-            _fsm.ChangeState(new RunState());
+
+            if (_fsm.currentState is not RunState)
+                _fsm.ChangeState(new RunState());
+
             return true;
         }
         else
@@ -84,12 +88,17 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
     public void HandleAnimated(FSMState state)
     {
-        string animationName = state.ToString().Replace("State","") + direction.ToString();
-        Debug.Log(animationName);
-        _animator.Play(animationName);
+        string animationName = state.ToString().Replace("State", "") + direction.ToString();
+
+        AnimatorStateInfo currentState = _animator.GetCurrentAnimatorStateInfo(0);
+
+        if (!currentState.IsName(animationName))
+        {
+            _animator.Play(animationName);
+            //Debug.Log(animationName);
+        }
     }
 
     // ========= INPUT EVENTS =========

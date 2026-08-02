@@ -9,7 +9,6 @@ public class RunState : FSMState
     {
         player = obj.GetComponent<PlayerController>();
         rb = obj.GetComponent<Rigidbody2D>();
-        Debug.Log("RUN enter");
     }
 
     public override void UpdateState(float delta)
