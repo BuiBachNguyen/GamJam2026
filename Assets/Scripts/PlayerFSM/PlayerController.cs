@@ -1,6 +1,8 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // ================= value INPUT =================
 
     Vector2 input = new Vector2(0, 0);
+    bool canMove = true;
 
     #region Getter-Setter
     public Animator Animator
@@ -104,11 +107,16 @@ public class PlayerController : MonoBehaviour
     // ========= INPUT EVENTS =========
     public void OnMove(InputValue movementvalue)
     {
+        if (CanMove == false) return;
         input = movementvalue.Get<Vector2>();
     }
     public void OnInteract(InputValue isInteract)
     {
-        this.isInteract = isInteract.isPressed;
+        if (isInteract.isPressed && _fsm.currentState is not PickUpState)
+        {
+            this.IsInteract = isInteract.isPressed;
+            _fsm.ChangeState(new PickUpState());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -149,4 +157,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public FacingDirection Facing { get; private set; }
+    public bool IsInteract { get => isInteract; set => isInteract = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
 }

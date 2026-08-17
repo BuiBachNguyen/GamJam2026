@@ -6,6 +6,12 @@ public class Inventory
 {
     public int id;
     public int amount;
+
+    public Inventory(int id, int amount)
+    {
+        this.id = id;
+        this.amount = amount;
+    }
 }
 
 public class InventorySystem : MonoBehaviour
@@ -28,7 +34,7 @@ public class InventorySystem : MonoBehaviour
     #endregion
 
     #region Variable
-    List<Inventory> listInventory;
+    public List<Inventory> listInventory;
     #endregion
     private void Awake()
     {
@@ -57,6 +63,7 @@ public class InventorySystem : MonoBehaviour
             }
         }
         listInventory.Add(inventory);
+        Debug.Log(listInventory.Count);
     }
 
     public Inventory getInventory(int id)
