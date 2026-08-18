@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 5.0f;
     bool isInteract = false;
 
+    private InputAction toggleInventoryAction;
+    private InputAction closeInventoryAction;
+
     // ================= value INPUT =================
 
     Vector2 input = new Vector2(0, 0);
@@ -36,9 +39,30 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private void OnEnable()
+    {
+        toggleInventoryAction.Enable();
+        closeInventoryAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        toggleInventoryAction.Disable();
+        closeInventoryAction.Disable();
+    }
+
+    void toggleInventory(bool state)
+    {
+        Time.timeScale = state ? 0f : 1f;
+        InventoryUIController.instance.showInventoryPanel(state);
+    }
     void Awake()
     {
         CacheComponent();
+        toggleInventoryAction = new InputAction(binding: "<Keyboard>/tab");
+        toggleInventoryAction.started += ctx => toggleInventory(true);
+        closeInventoryAction = new InputAction(binding: "<Keyboard>/q");
+        closeInventoryAction.started += ctx => toggleInventory(false);
     }
     void CacheComponent()
     {

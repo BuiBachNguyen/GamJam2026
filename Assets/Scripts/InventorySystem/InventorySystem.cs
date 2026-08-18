@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory
 {
@@ -35,6 +37,8 @@ public class InventorySystem : MonoBehaviour
 
     #region Variable
     public List<Inventory> listInventory;
+
+    private GridLayoutGroup gridLayout;
     #endregion
     private void Awake()
     {
@@ -44,26 +48,29 @@ public class InventorySystem : MonoBehaviour
     private void Start()
     {
         InitData();
+        LoadData();
     }
 
     #region Function
     void InitData()
     {
         listInventory = new List<Inventory>();
+        gridLayout = InventoryUIController.instance.gridLayout;
     }
 
-    public void saveInventory(Inventory inventory)
+    public bool saveInventory(Inventory inventory)
     {
         foreach (Inventory item in listInventory)
         {
             if (item.id == inventory.id)
             {
                 item.amount += inventory.amount;
-                return;
+                return true; // neu item da ton tai
             }
         }
         listInventory.Add(inventory);
         Debug.Log(listInventory.Count);
+        return false;
     }
 
     public Inventory getInventory(int id)
@@ -80,6 +87,27 @@ public class InventorySystem : MonoBehaviour
     public void clearInventory()
     {
         listInventory.Clear();
+    }
+
+    public void LoadData()
+    {
+        foreach (Inventory item in listInventory)
+        {
+            addInventoryToUI(item.id);
+        }
+    }
+
+    public void addInventoryToUI(int id)
+    {
+        InventoryItem infoItem = InventoryDictionary.instance.getInventorySO(id);
+        if (infoItem != null)
+        {
+            GameObject itemPrefab = InventoryUIController.instance.slotItemPrefab;
+            GameObject realSlot = Instantiate(itemPrefab, gridLayout.transform);
+            realSlot.transform.SetParent(gridLayout.transform, false);
+            // set up dữ liệu
+            realSlot.GetComponent<ItemSlot>().SetUp(infoItem.inventoryName, ": 1", infoItem.inventoryImage, infoItem.inventoryDescription);
+        }
     }
     #endregion
 }

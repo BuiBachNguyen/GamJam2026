@@ -13,7 +13,11 @@ public class PickableItem : MonoBehaviour
             if (collision.gameObject.GetComponentInParent<PlayerController>().Fsm.currentState is not PickUpState || havePicked) return;
             Debug.Log("Is Picking Item");
             havePicked = true;
-            InventorySystem.instance.saveInventory(new Inventory(id, 1));
+            bool itemExist = InventorySystem.instance.saveInventory(new Inventory(id, 1));
+            if (!itemExist)
+            {
+                InventorySystem.instance.addInventoryToUI(id);
+            }
             Destroy(gameObject, 0.5f); // tà đạo
         }
     }
