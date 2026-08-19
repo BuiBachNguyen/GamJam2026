@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 702727161651847479526c127baa0dcc, type: 3}
-  m_Name: TestItem
+  m_Name: Remote
   m_EditorClassIdentifier: 
   idInventory: 0
-  inventoryDescription: This item is used for testing inventory
-  inventoryName: Testing Item
+  inventoryDescription: "This Remote can use to change camera's v\u1EC9ew"
+  inventoryName: Remote
   inventoryImage: {fileID: 0}

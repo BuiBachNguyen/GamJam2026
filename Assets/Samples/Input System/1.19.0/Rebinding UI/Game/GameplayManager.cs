@@ -377,16 +377,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
         void UpdateCursor()
         {
-            if (paused)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            //if (paused)
+            //{
+            //    Cursor.visible = true;
+            //    Cursor.lockState = CursorLockMode.None;
+            //}
+            //else
+            //{
+            //    Cursor.visible = false;
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //}
         }
     }
 }
