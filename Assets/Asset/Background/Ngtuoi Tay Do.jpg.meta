@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bae57e79d1ac944429dfa890e79eda50
+guid: 1e5185f703fba574e933b17be55b9e74
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5092214929992348745
-    second: arrow_forward_30dp_000000_FILL0_wght400_GRAD0_opsz24_0
+      213: -9058185226163572608
+    second: Ngtuoi Tay Do_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow_forward_30dp_000000_FILL0_wght400_GRAD0_opsz24_0
+      name: Ngtuoi Tay Do_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 22
-        height: 22
+        x: 0
+        y: 0
+        width: 720
+        height: 547
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9447226cf7e2ba640800000000000000
-      internalID: 5092214929992348745
+      spriteID: 08034d4778cda4280800000000000000
+      internalID: -9058185226163572608
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrow_forward_30dp_000000_FILL0_wght400_GRAD0_opsz24_0: 5092214929992348745
+      Ngtuoi Tay Do_0: -9058185226163572608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

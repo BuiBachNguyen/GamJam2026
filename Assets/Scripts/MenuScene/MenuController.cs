@@ -36,6 +36,7 @@ public class MenuController : MonoBehaviour
 
         if (currentSelected != null && currentSelected != lastSelected)
         {
+            AudioSceneController.instance.playArrowChanging();
             MoveArrowTo(currentSelected.GetComponent<RectTransform>());
             lastSelected = currentSelected;
         }
