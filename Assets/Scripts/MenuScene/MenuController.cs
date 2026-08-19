@@ -49,8 +49,8 @@ public class MenuController : MonoBehaviour
         if (mainMenuRaycaster != null)
             mainMenuRaycaster.enabled = false;
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(mainFirstSelected);
@@ -67,8 +67,8 @@ public class MenuController : MonoBehaviour
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
 
         EventSystem.current.SetSelectedGameObject(null);
         if (settingsFirstSelected != null)

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using Unity.VisualScripting;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.Universal;
 
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     Vector2 input = new Vector2(0, 0);
     bool canMove = true;
+    bool isUsingRemote = false;
+
+    public static event Action<bool> IsRemoteUsed;
 
     #region Getter-Setter
     public Animator Animator
@@ -131,17 +132,27 @@ public class PlayerController : MonoBehaviour
     // ========= INPUT EVENTS =========
     public void OnMove(InputValue movementvalue)
     {
-        if (CanMove == false) return;
+        if (CanMove == false || isUsingRemote == true) return;
         input = movementvalue.Get<Vector2>();
     }
     public void OnInteract(InputValue isInteract)
     {
+        if(isUsingRemote == true) return;
         if (isInteract.isPressed && _fsm.currentState is not PickUpState)
         {
             this.IsInteract = isInteract.isPressed;
             _fsm.ChangeState(new PickUpState());
         }
     }
+
+    public void OnSwitchMode(InputValue isSwitch)
+    {
+        if(isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0 )
+        {
+            isUsingRemote = !isUsingRemote;
+            IsRemoteUsed.Invoke(isUsingRemote);
+        }    
+    }    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
