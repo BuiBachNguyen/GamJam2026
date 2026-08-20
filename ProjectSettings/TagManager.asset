@@ -42,8 +42,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
+  - name: TileMap
     uniqueID: 1642157469
+    locked: 0
+  - name: Object
+    uniqueID: 1301612165
+    locked: 0
+  - name: Character
+    uniqueID: 2239014459
+    locked: 0
+  - name: UI
+    uniqueID: 3706406023
     locked: 0
   m_RenderingLayers:
   - Default
