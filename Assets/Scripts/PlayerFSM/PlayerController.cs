@@ -101,6 +101,23 @@ public class PlayerController : MonoBehaviour
     // ================= MOVEMENT =================
     public bool HandleMoving()
     {
+        if (Camera.main != null)
+        {
+            float halfHeight = Camera.main.orthographicSize;
+            float halfWidth = halfHeight * Camera.main.aspect;
+            float padding = 0.2f;
+            Vector3 camPos = Camera.main.transform.position;
+            float minX = camPos.x - halfWidth + padding;
+            float maxX = camPos.x + halfWidth - padding;
+            float minY = camPos.y - halfHeight + padding;
+            float maxY = camPos.y + halfHeight - padding;
+
+            Vector2 playerPos = _rigidbody.position;
+            if (playerPos.x <= minX && input.x < 0) input.x = 0;
+            if (playerPos.x >= maxX && input.x > 0) input.x = 0;
+            if (playerPos.y <= minY && input.y < 0) input.y = 0;
+            if (playerPos.y >= maxY && input.y > 0) input.y = 0;
+        }
         if (Mathf.Abs(input.x) >= 0.1f || Mathf.Abs(input.y) >= 0.1f)
         {
             _rigidbody.linearVelocity = new Vector2(input.x, input.y) * moveSpeed;
@@ -112,8 +129,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _rigidbody.linearVelocity = new Vector2(0f, 0f);
+            _rigidbody.linearVelocity = Vector2.zero; 
         }
+
         return false;
     }
     public void HandleAnimated(FSMState state)

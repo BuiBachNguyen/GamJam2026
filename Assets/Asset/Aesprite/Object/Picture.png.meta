@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 544f32f846d005e41a63e7a4f0d279f6
+guid: 250c95a4162a857488ab1478ec3fcd0e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7406841916174963645
-    second: Teddy3_0
+      213: 7082200727899390915
+    second: Picture_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Teddy3_0
+      name: Picture_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 3
-        width: 36
-        height: 43
+        x: 6
+        y: 1
+        width: 19
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34ceae6358c953990800000000000000
-      internalID: -7406841916174963645
+      spriteID: 3c3c476f908094260800000000000000
+      internalID: 7082200727899390915
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Teddy3_0: -7406841916174963645
+      Picture_0: 7082200727899390915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
