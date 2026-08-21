@@ -22,7 +22,7 @@ public class StartButton : MonoBehaviour
 
     void Enter()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(KeyData.MainBedroomScene);
     }
 
 

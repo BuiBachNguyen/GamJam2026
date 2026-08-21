@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchMode(InputValue isSwitch)
     {
-        if(isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0 )
+        if(isSwitch.isPressed /*&& InventorySystem.instance.getInventory(0).amount > 0*/ )
         {
             isUsingRemote = !isUsingRemote;
             IsRemoteUsed.Invoke(isUsingRemote);
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         Right
     }
 
-    public FacingDirection Facing { get; private set; }
+    public FacingDirection Facing { get; set; }
     public bool IsInteract { get => isInteract; set => isInteract = value; }
     public bool CanMove { get => canMove; set => canMove = value; }
 }
