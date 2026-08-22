@@ -23,6 +23,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     public GameObject InteractionButton;
+    public GameObject SwitchModeButton;
     public Vector3 offset = new Vector3(0, 1.3f, 0);
     public void ShowTutorialInteraction(bool state, Vector3 postion)
     {
@@ -30,6 +31,15 @@ public class TutorialManager : MonoBehaviour
         if (state)
         {
             InteractionButton.transform.position = postion + offset;
+        }
+    }
+
+    public void ShowTutorialSwitchMode(bool state, Vector3 position)
+    {
+        SwitchModeButton.SetActive(state);
+        if (state)
+        {
+            SwitchModeButton.transform.position = position + offset;
         }
     }
 

@@ -46,6 +46,10 @@ public class InventoryUIController : MonoBehaviour
 
     #endregion
 
+    public bool isShowingInventoryPanel()
+    {
+        return inventoryPanel.activeSelf;
+    }
     public void showInventoryPanel(bool state)
     {
         inventoryPanel.SetActive(state);

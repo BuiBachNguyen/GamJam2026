@@ -97,7 +97,7 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void addInventoryToUI(int id)
+    public InventoryItem addInventoryToUI(int id)
     {
         InventoryItem infoItem = InventoryDictionary.instance.getInventorySO(id);
         if (infoItem != null)
@@ -108,6 +108,7 @@ public class InventorySystem : MonoBehaviour
             // set up dữ liệu
             realSlot.GetComponent<ItemSlot>().SetUp(infoItem.inventoryName, ": 1", infoItem.inventoryImage, infoItem.inventoryDescription);
         }
+        return infoItem;
     }
     #endregion
 }

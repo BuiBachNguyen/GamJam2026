@@ -24,7 +24,11 @@ public class FadeTransition : MonoBehaviour
     {
         gameObject.SetActive(true);
         canvas.alpha = 1f;
-        canvas.DOFade(0f, timeTrans).OnComplete(() => gameObject.SetActive(false));
+        canvas.DOFade(0f, timeTrans).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+            SystemControl.instance.removeAction();
+            });
     }
 
     public void Appear()

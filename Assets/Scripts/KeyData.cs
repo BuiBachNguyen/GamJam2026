@@ -16,4 +16,7 @@ public class KeyData : MonoBehaviour
     public static string BedroomBounds = "BedroomBounds";
     public static string UpStairPos = "UpStairPos";
     public static string UpStairCamPos = "UpStairCamPos";
+
+    [Header("ID object")]
+    public static int KeyLivingroom = 1;
 }

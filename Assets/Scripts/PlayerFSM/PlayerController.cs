@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 5.0f;
     bool isInteract = false;
 
-    private InputAction toggleInventoryAction;
-    private InputAction closeInventoryAction;
 
     // ================= value INPUT =================
 
@@ -40,30 +38,11 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    private void OnEnable()
-    {
-        toggleInventoryAction.Enable();
-        closeInventoryAction.Enable();
-    }
 
-    private void OnDisable()
-    {
-        toggleInventoryAction.Disable();
-        closeInventoryAction.Disable();
-    }
 
-    void toggleInventory(bool state)
-    {
-        Time.timeScale = state ? 0f : 1f;
-        InventoryUIController.instance.showInventoryPanel(state);
-    }
     void Awake()
     {
         CacheComponent();
-        toggleInventoryAction = new InputAction(binding: "<Keyboard>/tab");
-        toggleInventoryAction.started += ctx => toggleInventory(true);
-        closeInventoryAction = new InputAction(binding: "<Keyboard>/q");
-        closeInventoryAction.started += ctx => toggleInventory(false);
     }
     void CacheComponent()
     {
@@ -150,27 +129,68 @@ public class PlayerController : MonoBehaviour
     // ========= INPUT EVENTS =========
     public void OnMove(InputValue movementvalue)
     {
+        if (SystemControl.instance.freezeKeyboard())
+        {
+            input = Vector2.zero;
+            _rigidbody.linearVelocity = Vector2.zero;
+            return;
+        }
         if (CanMove == false || isUsingRemote == true) return;
         input = movementvalue.Get<Vector2>();
     }
     public void OnInteract(InputValue isInteract)
     {
-        if(isUsingRemote == true) return;
-        if (isInteract.isPressed && _fsm.currentState is not PickUpState)
+        if (SystemControl.instance.freezeKeyboard())
         {
-            this.IsInteract = isInteract.isPressed;
-            _fsm.ChangeState(new PickUpState());
+            return;
         }
+        Debug.Log("Is pressing interact");
+        if (isUsingRemote == true) return;
+        this.IsInteract = isInteract.isPressed;
     }
 
     public void OnSwitchMode(InputValue isSwitch)
     {
-        if(isSwitch.isPressed /*&& InventorySystem.instance.getInventory(0).amount > 0*/ )
+        if (!isUsingRemote && SystemControl.instance.freezeKeyboard() && !SystemControl.instance.forceAllowSwitchMode) return;
+        if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0)
         {
             isUsingRemote = !isUsingRemote;
             IsRemoteUsed.Invoke(isUsingRemote);
+            if (isUsingRemote)
+            {
+                SystemControl.instance.addAction();
+            } else
+            {
+                SystemControl.instance.removeAction();
+            }
         }    
     }    
+
+    public void OnOpenInventory(InputValue value)
+    {
+        if (SystemControl.instance.freezeKeyboard())
+        {
+            return;
+        }
+        if (value.isPressed)
+        {
+            InventoryUIController.instance.showInventoryPanel(true);
+            SystemControl.instance.addAction();
+        }
+    }
+
+    public void OnCloseInventory(InputValue value)
+    {
+        if (InventoryUIController.instance.isShowingInventoryPanel())
+        {
+            if (value.isPressed)
+            {
+                InventoryUIController.instance.showInventoryPanel(false);
+                SystemControl.instance.removeAction();
+            }
+        }
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Remote
   m_EditorClassIdentifier: 
   idInventory: 0
-  inventoryDescription: "This Remote can use to change camera's v\u1EC9ew"
+  inventoryDescription: "C\xF3 th\u1EC3 s\u1EED d\u1EE5ng \u0111\u1EC3 truy c\u1EADp
+    v\xE0o camera xung quanh c\xE1c ph\xF2ng."
   inventoryName: Remote
-  inventoryImage: {fileID: 0}
+  inventoryImage: {fileID: 21300000, guid: 4f3b92523e7265049990e46e2a0087cb, type: 3}

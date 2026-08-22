@@ -69,13 +69,15 @@ public class Door : MonoBehaviour
         {
             if (player.IsInteract)
             {
+                player.IsInteract = false;
                 OnInteract();
             }
         }
     }
 
-    public void OnInteract ()
+    public virtual void OnInteract ()
     {
+        SystemControl.instance.addAction();
         TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero); // close tutorial
         // Fade Camera
         FadeTransition transition = FadeCanvas.GetComponent<FadeTransition>();
@@ -104,7 +106,7 @@ public class Door : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         FadeTransition trans = FadeCanvas.GetComponent<FadeTransition>();
-        trans.Fade();
+        trans.Fade(); // remove action nam o day
         yield return new WaitForSeconds(trans.timeTrans + 1f);
     }
     
