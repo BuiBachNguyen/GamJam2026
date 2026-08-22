@@ -29,6 +29,7 @@ public class GameMainBedroomController : GameController
     public override void Start()
     {
         base.Start();
+        if (PlayerPrefs.GetInt(KeyData.StartConversation) == 1) return;
         StartCoroutine(firstConversation());
     } 
 
@@ -51,6 +52,7 @@ public class GameMainBedroomController : GameController
     {
         yield return null; // khuc nay nen doi tieng buoc chan xuong cau thanh roi goi
         DialogController.instance.playDialog(nextDialog);
+        PlayerPrefs.SetInt(KeyData.StartConversation, 1);
     }
 
 }

@@ -12,7 +12,7 @@ public class PickableItem : MonoBehaviour
 
     public float timeWait = 2f;
 
-    private void Start()
+    public virtual void Start()
     {
         if (PlayerPrefs.GetInt("Object" + id) == 1)
         {

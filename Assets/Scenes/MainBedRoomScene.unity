@@ -6628,6 +6628,7 @@ MonoBehaviour:
   id: 0
   canBePickedUpUnder: 1
   timeWait: 3
+  dialog: {fileID: 11400000, guid: 92774f2394521364da25b277daf841f6, type: 2}
 --- !u!1 &259669470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7757,6 +7758,7 @@ MonoBehaviour:
   id: 1
   canBePickedUpUnder: 0
   timeWait: 1.5
+  dialogInfo: {fileID: 11400000, guid: 408ce139c03c33647b42a4161bdd025e, type: 2}
 --- !u!61 &605245434
 BoxCollider2D:
   m_ObjectHideFlags: 0

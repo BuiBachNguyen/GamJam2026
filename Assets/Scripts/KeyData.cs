@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class KeyData : MonoBehaviour
@@ -19,4 +20,7 @@ public class KeyData : MonoBehaviour
 
     [Header("ID object")]
     public static int KeyLivingroom = 1;
+
+    [Header("Saved")]
+    public static string StartConversation = "StartConversation";
 }

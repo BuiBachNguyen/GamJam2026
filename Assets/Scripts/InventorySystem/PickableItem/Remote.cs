@@ -4,7 +4,7 @@ using UnityEngine;
 public class Remote : PickableItem
 {
     string tutorialString = "*Sử dụng R để mở tầm nhìn camera và WASD để di chuyển*";
-
+    public Dialog dialog;
     private void OnEnable()
     {
         PlayerController.IsRemoteUsed += UseRemote;
@@ -43,13 +43,18 @@ public class Remote : PickableItem
         GetComponent<Collider2D>().enabled = false;
 
 
-        yield return new WaitForSeconds(timeWait + 0.2f);
+        yield return new WaitForSeconds(timeWait + 1f);
 
-        SystemControl.instance.forceAllowSwitchMode = true;
+        DialogController.instance.playDialog(dialog, () =>
+        {
+            SystemControl.instance.forceAllowSwitchMode = true;
 
-        SystemControl.instance.addAction();
+            SystemControl.instance.addAction();
 
-        TutorialManager.instance.ShowTutorialSwitchMode(true, player.transform.position);
+            TutorialManager.instance.ShowTutorialSwitchMode(true, player.transform.position);
+        });
+
+        
 
 
     }

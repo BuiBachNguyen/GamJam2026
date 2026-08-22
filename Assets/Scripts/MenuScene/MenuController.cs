@@ -26,6 +26,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         OpenMainMenu();
+        PlayerPrefs.DeleteAll();
     }
 
     void Update()

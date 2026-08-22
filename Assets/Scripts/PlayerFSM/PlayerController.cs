@@ -152,13 +152,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchMode(InputValue isSwitch)
     {
-<<<<<<< HEAD
         if (!isUsingRemote && SystemControl.instance.freezeKeyboard() && !SystemControl.instance.forceAllowSwitchMode) return;
         if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0)
-=======
-        if (InventorySystem.instance.getInventory(0) == null) return;
-        if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0 )
->>>>>>> 8cfc6986b759d53e6c9d96e3ad7c42cb64196298
         {
             isUsingRemote = !isUsingRemote;
             IsRemoteUsed.Invoke(isUsingRemote);
