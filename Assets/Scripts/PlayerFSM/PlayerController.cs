@@ -100,7 +100,8 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(input.x) >= 0.1f || Mathf.Abs(input.y) >= 0.1f)
         {
             _rigidbody.linearVelocity = new Vector2(input.x, input.y) * moveSpeed;
-
+            if (AudioManager.Instance != null && AudioManager.Instance.IsPlayerSFXEnd())
+                AudioManager.Instance.PlayPlayerSFX(AudioClipNames.Run);
             if (_fsm.currentState is not RunState)
                 _fsm.ChangeState(new RunState());
 
@@ -151,8 +152,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchMode(InputValue isSwitch)
     {
+<<<<<<< HEAD
         if (!isUsingRemote && SystemControl.instance.freezeKeyboard() && !SystemControl.instance.forceAllowSwitchMode) return;
         if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0)
+=======
+        if (InventorySystem.instance.getInventory(0) == null) return;
+        if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0 )
+>>>>>>> 8cfc6986b759d53e6c9d96e3ad7c42cb64196298
         {
             isUsingRemote = !isUsingRemote;
             IsRemoteUsed.Invoke(isUsingRemote);
