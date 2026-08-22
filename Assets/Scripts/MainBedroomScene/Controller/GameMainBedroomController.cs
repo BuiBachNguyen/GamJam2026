@@ -30,7 +30,7 @@ public class GameMainBedroomController : GameController
     {
         base.Start();
         StartCoroutine(firstConversation());
-    }
+    } 
 
     public Collider2D getBounds(int id)
     {

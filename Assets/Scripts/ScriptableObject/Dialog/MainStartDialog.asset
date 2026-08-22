@@ -20,5 +20,5 @@ MonoBehaviour:
     quan s\xE1t c\u1EE7a b\u1ED1 m\u1EB9. Ch\u1EAFc n\xEAn ki\u1EBFm \u0111\u1ED3
     v\u1EADt g\xEC \u0111\xF3 \u0111\u1EC3 \u0111i\u1EC1u khi\u1EC3n camera quan
     s\xE1t c\u1EE7a b\u1ED1 m\u1EB9."
-  typeSpeed: 0.05
+  typeSpeed: 0.02
   soundEffect: {fileID: 0}

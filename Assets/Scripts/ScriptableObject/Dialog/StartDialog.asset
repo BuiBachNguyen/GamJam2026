@@ -18,5 +18,5 @@ MonoBehaviour:
   - "B\u1ED1 m\u1EB9 \u0111i l\xE0m nh\xE9! \u0110\u1ED3 \u0103n s\xE1ng m\u1EB9
     \u0111\u1EC3 d\u01B0\u1EDBi ph\xF2ng kh\xE1ch khi n\xE0o con d\u1EADy th\xEC
     xu\u1ED1ng \u0103n nh\xE9. Y\xEAu con :33"
-  typeSpeed: 0.05
+  typeSpeed: 0.02
   soundEffect: {fileID: 0}
