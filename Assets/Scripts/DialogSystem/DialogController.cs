@@ -145,6 +145,8 @@ public class DialogController : MonoBehaviour
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
+            if (AudioManager.Instance != null && !AudioManager.Instance.IsSFXEnd())
+                AudioManager.Instance.StopSFX();
         }
         dialogContent.text = currentDialog.lines[index];
         isTyping = false;
@@ -153,6 +155,9 @@ public class DialogController : MonoBehaviour
     IEnumerator TypeLine()
     {
         isTyping = true;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.Typing);
         dialogContent.text = ""; 
 
         foreach (char c in currentDialog.lines[index])
@@ -161,6 +166,8 @@ public class DialogController : MonoBehaviour
             yield return new WaitForSeconds(currentDialog.typeSpeed);
         }
 
-        isTyping = false; 
+        isTyping = false;
+        if (AudioManager.Instance != null && !AudioManager.Instance.IsSFXEnd())
+            AudioManager.Instance.StopSFX();
     }
 }

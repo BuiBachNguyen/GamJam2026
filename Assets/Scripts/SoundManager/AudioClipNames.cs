@@ -13,4 +13,9 @@ public static class AudioClipNames
     public static string UIButton = "Cassette-Play";
     public static string InitModule = "InitModule";
     public static string Emit = "Emit";
+    public static string PickUp = "Interact";
+    public static string OpenDoor = "door-opening";
+    public static string SlideCard = "slidecard";
+    public static string TurnPage = "page-turn-2";
+    public static string Typing = "keyboard-typing-fast";
 }

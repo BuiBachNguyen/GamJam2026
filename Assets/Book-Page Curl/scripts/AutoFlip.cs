@@ -54,6 +54,8 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage >= ControledBook.TotalPageCount) return;
         isFlipping = true;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.TurnPage);
         if (ControledBook.matchingPicture != null)
             ControledBook.matchingPicture.GetComponent<CanvasGroup>().alpha = 0;
 
@@ -71,6 +73,8 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage <= 0) return;
         isFlipping = true;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.TurnPage);
         if (ControledBook.matchingPicture != null)
             ControledBook.matchingPicture.GetComponent<CanvasGroup>().alpha = 0;
 

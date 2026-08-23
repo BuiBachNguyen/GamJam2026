@@ -158,6 +158,8 @@ public class PlayerController : MonoBehaviour
         {
             isUsingRemote = !isUsingRemote;
             IsRemoteUsed.Invoke(isUsingRemote);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlaySFX(AudioClipNames.Emit);
             if (isUsingRemote)
             {
                 SystemControl.instance.addAction();
@@ -177,6 +179,8 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             InventoryUIController.instance.showInventoryPanel(true);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlaySFX(AudioClipNames.UIButton);
             SystemControl.instance.addAction();
         }
     }

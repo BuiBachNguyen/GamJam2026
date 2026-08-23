@@ -14,6 +14,8 @@ public class PickUpState : FSMState
 
         player.HandleAnimated(this);
         timer = player.Animator.GetCurrentAnimatorStateInfo(0).length;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.PickUp);
     }
 
     public override void UpdateState(float delta)
