@@ -17,9 +17,11 @@ public class AudioManager : MonoBehaviour
 
     private float bgmVolume = 1f;
     private float sfxVolume = 1f;
+    private float PsfxVolume = 0.5f;
 
     private const string BGM_VOLUME_KEY = "BGMVolume";
     private const string SFX_VOLUME_KEY = "SFXVolume";
+    private const string PSFX_VOLUME_KEY = "PSFXVolume";
 
     private void Awake()
     {
@@ -37,8 +39,9 @@ public class AudioManager : MonoBehaviour
 
     private void InitializeAudio()
     {
-        bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 1f);
+        bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 0.2f);
         sfxVolume = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 1f);
+        PsfxVolume = PlayerPrefs.GetFloat(PSFX_VOLUME_KEY, 0.5f);
 
         UpdateVolumes();
     }
@@ -67,7 +70,7 @@ public class AudioManager : MonoBehaviour
         if (sfxSource != null)
             sfxSource.volume = sfxVolume;
         if(playerSFXSource != null)
-            playerSFXSource.volume = sfxVolume;
+            playerSFXSource.volume = PsfxVolume;
     }
 
     public float GetBGMVolume() => bgmVolume;
@@ -109,6 +112,10 @@ public class AudioManager : MonoBehaviour
     public void StopBGM()
     {
         bgmSource.Stop();
+    }
+    public void StopSFX()
+    {
+        sfxSource.Stop();
     }
 
     public void PauseBGM()

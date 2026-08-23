@@ -45,6 +45,8 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage >= ControledBook.TotalPageCount) return;
         isFlipping = true;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.TurnPage);
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
@@ -59,6 +61,8 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage <= 0) return;
         isFlipping = true;
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.TurnPage);
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;

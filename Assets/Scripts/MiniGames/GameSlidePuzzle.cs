@@ -175,6 +175,9 @@ public class GameSlidePuzzle : MonoBehaviour
         if (shuffling)
             return;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioClipNames.SlideCard);
+
         for (int i = 0; i < pieces.Count; i++)
         {
             if (SwapIfValid(i, offset, GetColCheck(offset)))

@@ -40,6 +40,10 @@ public class Door : MonoBehaviour
         if (player !=  null)
         {
             player.transform.position = newPlayerPosition.transform.position; // move player to a new Place
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioClipNames.OpenDoor);
+            }    
             WindowMover.Instance.TeleportToNewRoom(newCameraPosition.transform.position, newBounds);  // move Camera and Set new collider bounds
             StartCoroutine(fadeProcess());
         }

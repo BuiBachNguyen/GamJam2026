@@ -23,6 +23,11 @@ public class StartButton : MonoBehaviour
     void Enter()
     {
         SceneManager.LoadScene(KeyData.MainBedroomScene);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayBGM("BackgroundSound");
+            AudioManager.Instance.PlaySFX(AudioClipNames.UIButton);
+        }    
     }
 
 
