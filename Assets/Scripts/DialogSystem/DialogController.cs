@@ -66,6 +66,9 @@ public class DialogController : MonoBehaviour
 
     public void showDialogPanel(bool state)
     {
+        // Thêm dòng chặn này tương tự
+        if (DialogPanel.activeSelf == state) return;
+
         DialogPanel.SetActive(state);
         if (state)
         {

@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -39,13 +39,17 @@ public class PCUIController : MonoBehaviour
 
     public void showPCPanel(bool state)
     {
+        // Nếu trạng thái của panel đã đúng như mong muốn rồi thì dừng luôn, không làm gì cả
+        if (PCPanel.activeSelf == state) return;
+
         PCPanel.SetActive(state);
         if (state)
         {
             CloseOffScreen();
             ClosePassPanel();
             SystemControl.instance.addAction();
-        } else
+        }
+        else
         {
             SystemControl.instance.removeAction();
         }

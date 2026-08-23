@@ -23,10 +23,14 @@ public class KeyData : MonoBehaviour
     public static string InParentRoomPlayerSpawn = "PlayerSpawn";
     public static string InParentRoomCameraSpawn = "CameraSpawn";
     public static string ParentroomBounds = "ParentroomBounds";
+    public static string InFrontParent = "InFrontParent";
+    public static string CamInFrontParent = "CamInFrontParent";
+
 
     [Header("ID object")]
     public static int KeyLivingroom = 1;
     public static int KeyKitchen = 4;
+    public static int Scissor = 5;
 
     [Header("Saved")]
     public static string StartConversation = "StartConversation";

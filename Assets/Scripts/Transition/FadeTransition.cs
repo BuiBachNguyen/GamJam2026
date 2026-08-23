@@ -43,6 +43,10 @@ public class FadeTransition : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         Fade();
+
+        yield return new WaitForSeconds(1.5f);
+
+        SystemControl.instance.addAction();
     }
 
 

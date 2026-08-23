@@ -12,6 +12,8 @@ public class PickableItem : MonoBehaviour
 
     public float timeWait = 2f;
 
+    protected bool canShowTuto = true;
+
     public virtual void Start()
     {
         if (PlayerPrefs.GetInt("Object" + id) == 1)
@@ -27,7 +29,21 @@ public class PickableItem : MonoBehaviour
         {
             Debug.Log("Colliding");
             player = collision.GetComponentInParent<PlayerController>();
+            if (canShowTuto)
             showPickUpTutorial(true);
+        }
+    }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Colliding");
+            player = collision.gameObject.GetComponentInParent<PlayerController>();
+            if (canShowTuto)
+                showPickUpTutorial(true);
         }
     }
 
@@ -41,9 +57,27 @@ public class PickableItem : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+            showPickUpTutorial(false);
+            //player = null;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerCollider"))
+        {
+            PickUpProcess(collision);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             PickUpProcess(collision);
         }
@@ -73,6 +107,28 @@ public class PickableItem : MonoBehaviour
             timeDestroy = 0.5f;
         }
         havePicked = true;
+        player.IsInteract = false;
+        bool itemExist = InventorySystem.instance.saveInventory(new Inventory(id, 1));
+        if (!itemExist)
+        {
+            InventoryItem info = InventorySystem.instance.addInventoryToUI(id);
+            NotificationUIController.instance.setContent("[Bạn nhận được " + info.inventoryName + ".]", timeWait);
+        }
+        PlayerPrefs.SetInt("Object" + id, 1);
+        Destroy(gameObject, timeDestroy);
+    }
+
+    public virtual void PickUpProcess(Collision2D collision)
+    {
+        if (havePicked) return;
+        if (!player.IsInteract) return;
+        if (canBePickedUpUnder && player.Fsm.currentState is not PickUpState) // tranh spam nut
+        {
+            player.Fsm.ChangeState(new PickUpState());
+            timeDestroy = 0.5f;
+        }
+        havePicked = true;
+        player.IsInteract = false;
         bool itemExist = InventorySystem.instance.saveInventory(new Inventory(id, 1));
         if (!itemExist)
         {

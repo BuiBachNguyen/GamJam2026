@@ -25,17 +25,17 @@ public class PC : PickableItem
     {
         if (havePicked) return;
         if (!player.IsInteract) return;
+        havePicked = true;
+        player.IsInteract = false;
         if (PlayerPrefs.GetInt("Computer") == 1)
         {
             // da xong thu thach 
             DialogController.instance.playDialog(alreadyUsePCDialog, () =>
             {
                 GetComponent<Collider2D>().enabled = false;
-                return;
             });
+            return;
         }
-        havePicked = true;
-        player.IsInteract = false;
         TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
         DialogController.instance.playDialog(usePCDialog, () =>
         {

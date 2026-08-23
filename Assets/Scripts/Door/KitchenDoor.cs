@@ -19,22 +19,17 @@ public class KitchenDoor : Door
     {
         animator.SetTrigger("Close");
     }
-    public override void Move()
-    {
-        // cap nhat lai vi tri qua scene moi
-        SceneManager.LoadScene(KeyData.KitchenScene);
-    }
 
     public override void OnInteract()
     {
         TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
-        if (InventorySystem.instance.getInventory(KeyData.KeyKitchen) != null)
-        {
+        //if (InventorySystem.instance.getInventory(KeyData.KeyKitchen) != null)
+        //{
             StartCoroutine(openDoor());
             return;
-        }
-        NotificationUIController.instance.setContent(notifyString, timeWait);
-        StartCoroutine(conversation());
+        //}
+        //NotificationUIController.instance.setContent(notifyString, timeWait);
+        //StartCoroutine(conversation());
     }
 
     IEnumerator conversation()
@@ -53,5 +48,8 @@ public class KitchenDoor : Door
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
         base.OnInteract();
+
+        animator.SetTrigger("Close");
+
     }
 }
