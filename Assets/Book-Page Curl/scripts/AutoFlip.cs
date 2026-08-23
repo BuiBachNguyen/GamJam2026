@@ -11,6 +11,8 @@ public class AutoFlip : MonoBehaviour {
     public int AnimationFramesCount = 40;
     bool isFlipping = false;
     // Use this for initialization
+    public GameObject panel;
+
     void Start () {
         if (!ControledBook)
             ControledBook = GetComponent<Book>();
@@ -33,6 +35,9 @@ public class AutoFlip : MonoBehaviour {
             FlipRightPage();
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             FlipLeftPage();
+        if (Input.GetKeyDown(KeyCode.Escape) && panel != null)
+            panel.SetActive(false);
+
 
     }
 
