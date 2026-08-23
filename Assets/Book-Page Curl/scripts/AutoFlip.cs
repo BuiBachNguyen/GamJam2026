@@ -35,8 +35,6 @@ public class AutoFlip : MonoBehaviour {
             FlipRightPage();
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             FlipLeftPage();
-        if (Input.GetKeyDown(KeyCode.Escape) && panel != null)
-            panel.SetActive(false);
 
 
     }

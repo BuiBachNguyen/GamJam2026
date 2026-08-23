@@ -22,6 +22,7 @@ public class Album : PickableItem
             sp.sprite = albumOpen;
         }
     }
+
     public override void PickUpProcess(Collider2D collision)
     {
         if (!player.IsInteract) return;
@@ -34,5 +35,17 @@ public class Album : PickableItem
             panel.SetActive(true);
         }
 
+    }
+    private void Update()
+    {
+        if (panel != null)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                PlayerPrefs.SetInt("Album", 0);
+                panel.SetActive(false);
+            }
+        } 
+            
     }
 }
