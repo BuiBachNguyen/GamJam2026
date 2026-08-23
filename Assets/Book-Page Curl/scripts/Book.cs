@@ -155,7 +155,7 @@ public class Book : MonoBehaviour
         else
             UpdateBookLTRToPoint(f);
 
-        matchingPicture.gameObject.SetActive((currentPage == bookPages.Length - 1) && !matchingPicture.isMatched);
+        matchingPicture.gameObject.SetActive((currentPage == bookPages.Length) && !matchingPicture.isMatched);
     }
     public void UpdateBookLTRToPoint(Vector3 followLocation)
     {

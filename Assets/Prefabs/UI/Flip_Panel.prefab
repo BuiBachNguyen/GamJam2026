@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0613722a734154faccc15e83c5942b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 180
+  spinSpeed: 90
   image: {fileID: 3754541669709469771}
   frontSprite: {fileID: -142068148398380076, guid: 9fb4d9def386a3046aa39f8620a5650f, type: 3}
   backSprite: {fileID: -712789034908467298, guid: 9fb4d9def386a3046aa39f8620a5650f, type: 3}

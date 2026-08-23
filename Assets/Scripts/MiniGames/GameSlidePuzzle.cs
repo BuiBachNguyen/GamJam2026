@@ -42,7 +42,8 @@ public class GameSlidePuzzle : MonoBehaviour
 
             IsSolved?.Invoke();
 
-            StartCoroutine(WaitShuffle(0.5f));
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(WaitShuffle(0.5f));
         }
 
         // Input
@@ -61,6 +62,10 @@ public class GameSlidePuzzle : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Move(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            this.gameObject.SetActive(false);
         }
     }
 
