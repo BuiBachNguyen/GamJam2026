@@ -6,7 +6,8 @@ public class Album : PickableItem
     public Sprite albumClose;
     SpriteRenderer sp;
 
-    
+    public GameObject panel;
+
 
     public override void Start()
     {
@@ -16,9 +17,9 @@ public class Album : PickableItem
         {
             sp.sprite = albumClose;
         }
-        else if (PlayerPrefs.GetInt("Album")  == 1)
+        else if (PlayerPrefs.GetInt("Album") == 1)
         {
-             sp.sprite = albumOpen;
+            sp.sprite = albumOpen;
         }
     }
     public override void PickUpProcess(Collider2D collision)
@@ -28,5 +29,10 @@ public class Album : PickableItem
         GetComponent<Collider2D>().enabled = false;
         sp.sprite = albumOpen;
         // thuc hien ham gi do o day
+        if (panel != null) //open nha
+        {
+            panel.SetActive(true);
+        }
+
     }
 }

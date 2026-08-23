@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSwitchMode(InputValue isSwitch)
     {
+        if (InventorySystem.instance.getInventory(0) == null) return;
         if (!isUsingRemote && SystemControl.instance.freezeKeyboard() && !SystemControl.instance.forceAllowSwitchMode) return;
         if (isSwitch.isPressed && InventorySystem.instance.getInventory(0).amount > 0)
         {

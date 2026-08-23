@@ -20,7 +20,7 @@ public class GenericInput : MonoBehaviour
     [Header("Events")]
     public UnityEvent<string> OnCodeCompleted;
 
-    private List<DigitSlot> slots = new List<DigitSlot>();
+    [SerializeField] private List<DigitSlot> slots = new List<DigitSlot>();
     private string currentInput = "";
 
     private void Start()
@@ -123,10 +123,10 @@ public class GenericInput : MonoBehaviour
             return;
         }
         pointerArrow.gameObject.SetActive(true);
-        Vector2 targetPos = slots[activeIndex].GetComponent<RectTransform>().anchoredPosition;
+        Vector2 targetPos = slots[activeIndex].GetComponent<RectTransform>().position;
         targetPos.y += yOffset; 
 
-        pointerArrow.anchoredPosition = targetPos;
+        pointerArrow.position = targetPos;
 
     }
 
