@@ -31,6 +31,16 @@ public class GameMainBedroomController : GameController
         base.Start();
         if (PlayerPrefs.GetInt(KeyData.StartConversation) == 1) return;
         StartCoroutine(firstConversation());
+        bool exist = InventorySystem.instance.saveInventory(new Inventory(KeyData.BrotherPic, 1));
+        if (!exist)
+        {
+            InventorySystem.instance.addInventoryToUI(KeyData.BrotherPic);
+        }
+        exist = InventorySystem.instance.saveInventory(new Inventory(KeyData.KeyLivingroom, 1));
+        if (!exist)
+        {
+            InventorySystem.instance.addInventoryToUI(KeyData.KeyLivingroom);
+        }
     } 
 
     public Collider2D getBounds(int id)

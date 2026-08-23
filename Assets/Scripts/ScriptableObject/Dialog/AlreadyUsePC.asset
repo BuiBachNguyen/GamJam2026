@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
   m_Name: AlreadyUsePC
   m_EditorClassIdentifier: 
-  CharName: Niko
+  CharName: Chan
   CharAvatar: {fileID: 21300000, guid: 0a1924fdfb0321c489a56066b074ec4f, type: 3}
   lines:
   - "M\xECnh \u0111\xE3 s\u1EED d\u1EE5ng xong m\xE1y t\xEDnh. Kh\xF4ng c\u1EA7n

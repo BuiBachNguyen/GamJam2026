@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TitleBar : MonoBehaviour, IDragHandler, IBeginDragHandler
@@ -7,12 +8,17 @@ public class TitleBar : MonoBehaviour, IDragHandler, IBeginDragHandler
     [SerializeField] private RectTransform windowToMove;
     [SerializeField] private RectTransform dragArea;
 
+    Button closeBtn;
+
     private Canvas canvas;
 
     public void SetUp(Canvas canvas, RectTransform drag)
     {
         this.canvas = canvas;
         dragArea = drag;
+        closeBtn = GetComponentInChildren<Button>();
+        closeBtn.onClick.RemoveAllListeners();
+        closeBtn.onClick.AddListener(() => Destroy(this.transform.parent.gameObject));
     }
 
     private void Awake()

@@ -32,6 +32,7 @@ public class KeyData : MonoBehaviour
     public static int KeyKitchen = 4;
     public static int Scissor = 5;
     public static int DoorNumb = 7;
+    public static int BrotherPic = 6;
 
     [Header("Saved")]
     public static string StartConversation = "StartConversation";

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
   m_Name: LockKitchenDialog
   m_EditorClassIdentifier: 
-  CharName: Niko
+  CharName: Chan
   CharAvatar: {fileID: 21300000, guid: 0a1924fdfb0321c489a56066b074ec4f, type: 3}
   lines:
   - "N\u01A1i n\xE0y c\xF3 nhi\u1EC1u \u0111\u1ED3 v\u1EADt s\u1EAFc nh\u1ECDn, m\xECnh

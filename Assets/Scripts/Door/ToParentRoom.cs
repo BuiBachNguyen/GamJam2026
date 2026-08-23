@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class ToParentRoom : Door
 {
     public bool PuzzleIsSolve = false;
-    public GameObject Puzzle; 
+    public GameObject Puzzle;
+    public Dialog dialog;
     public override void Move()
     {
         ScenePositionController.cameraScenePosition = KeyData.InParentRoomCameraSpawn;
@@ -21,7 +22,14 @@ public class ToParentRoom : Door
         }
         else
         {
-            Puzzle.SetActive(true);
+            TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
+            DialogController.instance.playDialog(dialog, () =>
+            {
+                Puzzle.SetActive(true);
+                SystemControl.instance.addAction();
+                
+            });
+            
         }    
         
     }
@@ -29,12 +37,14 @@ public class ToParentRoom : Door
     {
         this.PuzzleIsSolve = true;
         Puzzle.SetActive(false);
+        SystemControl.instance.removeAction();
     }    
     private void Awake()
     {
         GameSlidePuzzle.IsSolved -= OnSolved;
         GameSlidePuzzle.IsSolved += OnSolved;
         Puzzle.SetActive(false);
+
     }
     private void OnDestroy()
     {

@@ -15,5 +15,5 @@ MonoBehaviour:
   idInventory: 6
   inventoryDescription: "M\u1ED9t ph\u1EA7n c\u1EE7a t\u1EA5m \u1EA3nh n\xE0o \u0111\xF3
     r\u01A1i ra t\u1EEB t\xFAi m\u1EB9 h\xF4m qua."
-  inventoryName: "T\u1EA5m \u1EA3nh b\u1ECB khuy\u1EBFt"
+  inventoryName: "T\u1EA5m \u1EA3nh"
   inventoryImage: {fileID: 0}

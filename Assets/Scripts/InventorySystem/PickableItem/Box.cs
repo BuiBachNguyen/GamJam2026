@@ -18,11 +18,19 @@ public class Box : PickableItem
     }
     public override void Start()
     {
+        if (PlayerPrefs.GetInt("ExistBox") == 1)
+        {
+            this.gameObject.SetActive(true);
+        } else
+        {
+            gameObject.SetActive(false);
+        }
         if (PlayerPrefs.GetInt("Box") == 1)
         {
             sp.sprite = open;
             canShowTuto = false;
-        } else if (PlayerPrefs.GetInt("Box") == 0)
+        }
+        else if (PlayerPrefs.GetInt("Box") == 0)
         {
             sp.sprite = close;
         }

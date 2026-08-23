@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
   m_Name: StartDialog
   m_EditorClassIdentifier: 
-  CharName: "B\u1ED1 m\u1EB9"
+  CharName: "B\u1ED1 v\xE0 M\u1EB9"
   CharAvatar: {fileID: 0}
   lines:
   - "B\u1ED1 m\u1EB9 \u0111i l\xE0m nh\xE9! \u0110\u1ED3 \u0103n s\xE1ng m\u1EB9

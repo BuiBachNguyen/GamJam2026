@@ -10,6 +10,7 @@ public class BrotherDoor : Door
 
     public override void OnInteract()
     {
+        TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
         if (InventorySystem.instance.getInventory(KeyData.DoorNumb) != null)
         {
             NotificationUIController.instance.setContent(afterString, timeWait);

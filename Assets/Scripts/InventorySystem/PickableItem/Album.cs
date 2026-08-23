@@ -32,6 +32,7 @@ public class Album : PickableItem
         // thuc hien ham gi do o day
         if (panel != null) //open nha
         {
+            SystemControl.instance.addAction();
             panel.SetActive(true);
         }
 
@@ -44,6 +45,7 @@ public class Album : PickableItem
             {
                 PlayerPrefs.SetInt("Album", 0);
                 panel.SetActive(false);
+                SystemControl.instance.removeAction();
             }
         } 
             

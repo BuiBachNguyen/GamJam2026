@@ -6,11 +6,13 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
+
 public enum FlipMode
 {
     RightToLeft,
     LeftToRight
 }
+
 [ExecuteInEditMode]
 public class Book : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class Book : MonoBehaviour
     public bool enableShadowEffect = true;
 
     public MatchingPicture matchingPicture;
-    
+
     //represent the index of the sprite shown in the right page
     public int currentPage = 0;
     public int TotalPageCount
@@ -68,6 +70,10 @@ public class Book : MonoBehaviour
     //follow point 
     Vector3 f;
     bool pageDragging = false;
+
+    // THÊM BIẾN NÀY ĐỂ QUẢN LÝ LẬT TRANG
+    public bool isTurning = false;
+
     //current flip mode
     FlipMode mode;
 
@@ -85,7 +91,6 @@ public class Book : MonoBehaviour
         float pageHeight = BookPanel.rect.height;
         NextPageClip.rectTransform.sizeDelta = new Vector2(pageWidth, pageHeight + pageHeight * 2);
 
-
         ClippingPlane.rectTransform.sizeDelta = new Vector2(pageWidth * 2 + pageHeight, pageHeight + pageHeight * 2);
 
         //hypotenous (diagonal) page length
@@ -97,7 +102,6 @@ public class Book : MonoBehaviour
 
         ShadowLTR.rectTransform.sizeDelta = new Vector2(pageWidth, shadowPageHeight);
         ShadowLTR.rectTransform.pivot = new Vector2(0, (pageWidth / 2) / shadowPageHeight);
-
     }
 
     private void CalcCurlCriticalPoints()
@@ -140,13 +144,17 @@ public class Book : MonoBehaviour
             return localPos;
         }
     }
+
     void Update()
     {
         if (pageDragging && interactable)
         {
             UpdateBook();
         }
+
+        
     }
+
     public void UpdateBook()
     {
         f = Vector3.Lerp(f, transformPoint(Input.mousePosition), Time.deltaTime * 10);
@@ -155,8 +163,9 @@ public class Book : MonoBehaviour
         else
             UpdateBookLTRToPoint(f);
 
-        matchingPicture.gameObject.SetActive((currentPage == bookPages.Length) && !matchingPicture.isMatched);
+        // (Đã xóa lệnh SetActive cũ ở đây để không bị xung đột)
     }
+
     public void UpdateBookLTRToPoint(Vector3 followLocation)
     {
         mode = FlipMode.LeftToRight;
@@ -194,6 +203,7 @@ public class Book : MonoBehaviour
 
         ShadowLTR.rectTransform.SetParent(Left.rectTransform, true);
     }
+
     public void UpdateBookRTLToPoint(Vector3 followLocation)
     {
         mode = FlipMode.RightToLeft;
@@ -230,6 +240,7 @@ public class Book : MonoBehaviour
 
         Shadow.rectTransform.SetParent(Right.rectTransform, true);
     }
+
     private float CalcClipAngle(Vector3 c, Vector3 bookCorner, out Vector3 t1)
     {
         Vector3 t0 = (c + bookCorner) / 2;
@@ -248,6 +259,7 @@ public class Book : MonoBehaviour
         T0_T1_Angle = Mathf.Atan2(T0_T1_dy, T0_T1_dx) * Mathf.Rad2Deg;
         return T0_T1_Angle;
     }
+
     private float normalizeT1X(float t1, Vector3 corner, Vector3 sb)
     {
         if (t1 > sb.x && sb.x > corner.x)
@@ -256,6 +268,7 @@ public class Book : MonoBehaviour
             return sb.x;
         return t1;
     }
+
     private Vector3 Calc_C_Position(Vector3 followLocation)
     {
         Vector3 c;
@@ -274,19 +287,21 @@ public class Book : MonoBehaviour
         float F_ST_dx = c.x - st.x;
         float F_ST_Angle = Mathf.Atan2(F_ST_dy, F_ST_dx);
         Vector3 r2 = new Vector3(radius2 * Mathf.Cos(F_ST_Angle),
-           radius2 * Mathf.Sin(F_ST_Angle), 0) + st;
+            radius2 * Mathf.Sin(F_ST_Angle), 0) + st;
         float C_ST_distance = Vector2.Distance(c, st);
         if (C_ST_distance > radius2)
             c = r2;
         return c;
     }
+
     public void DragRightPageToPoint(Vector3 point)
     {
         if (currentPage >= bookPages.Length) return;
+
+        isTurning = true; // Bật trạng thái đang lật
         pageDragging = true;
         mode = FlipMode.RightToLeft;
         f = point;
-
 
         NextPageClip.rectTransform.pivot = new Vector2(0, 0.12f);
         ClippingPlane.rectTransform.pivot = new Vector2(1, 0.35f);
@@ -309,15 +324,18 @@ public class Book : MonoBehaviour
         if (enableShadowEffect) Shadow.gameObject.SetActive(true);
         UpdateBookRTLToPoint(f);
     }
+
     public void OnMouseDragRightPage()
     {
         if (interactable)
             DragRightPageToPoint(transformPoint(Input.mousePosition));
-
     }
+
     public void DragLeftPageToPoint(Vector3 point)
     {
         if (currentPage <= 0) return;
+
+        isTurning = true; // Bật trạng thái đang lật
         pageDragging = true;
         mode = FlipMode.LeftToRight;
         f = point;
@@ -343,17 +361,19 @@ public class Book : MonoBehaviour
         if (enableShadowEffect) ShadowLTR.gameObject.SetActive(true);
         UpdateBookLTRToPoint(f);
     }
+
     public void OnMouseDragLeftPage()
     {
         if (interactable)
             DragLeftPageToPoint(transformPoint(Input.mousePosition));
-
     }
+
     public void OnMouseRelease()
     {
         if (interactable)
             ReleasePage();
     }
+
     public void ReleasePage()
     {
         if (pageDragging)
@@ -369,12 +389,15 @@ public class Book : MonoBehaviour
                 TweenForward();
         }
     }
+
     Coroutine currentCoroutine;
+
     void UpdateSprites()
     {
         LeftNext.sprite = (currentPage > 0 && currentPage <= bookPages.Length) ? bookPages[currentPage - 1] : background;
         RightNext.sprite = (currentPage >= 0 && currentPage < bookPages.Length) ? bookPages[currentPage] : background;
     }
+
     public void TweenForward()
     {
         if (mode == FlipMode.RightToLeft)
@@ -382,6 +405,7 @@ public class Book : MonoBehaviour
         else
             currentCoroutine = StartCoroutine(TweenTo(ebr, 0.15f, () => { Flip(); }));
     }
+
     void Flip()
     {
         if (mode == FlipMode.RightToLeft)
@@ -400,7 +424,10 @@ public class Book : MonoBehaviour
         ShadowLTR.gameObject.SetActive(false);
         if (OnFlip != null)
             OnFlip.Invoke();
+
+        isTurning = false; // Tắt trạng thái đang lật khi xong
     }
+
     public void TweenBack()
     {
         if (mode == FlipMode.RightToLeft)
@@ -415,6 +442,8 @@ public class Book : MonoBehaviour
                     Left.gameObject.SetActive(false);
                     Right.gameObject.SetActive(false);
                     pageDragging = false;
+
+                    isTurning = false; // Tắt trạng thái đang lật nếu rớt trang
                 }
                 ));
         }
@@ -431,10 +460,13 @@ public class Book : MonoBehaviour
                     Left.gameObject.SetActive(false);
                     Right.gameObject.SetActive(false);
                     pageDragging = false;
+
+                    isTurning = false; // Tắt trạng thái đang lật nếu rớt trang
                 }
                 ));
         }
     }
+
     public IEnumerator TweenTo(Vector3 to, float duration, System.Action onFinish)
     {
         int steps = (int)(duration / 0.025f);

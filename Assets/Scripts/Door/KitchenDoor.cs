@@ -23,13 +23,13 @@ public class KitchenDoor : Door
     public override void OnInteract()
     {
         TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
-        //if (InventorySystem.instance.getInventory(KeyData.KeyKitchen) != null)
-        //{
+        if (InventorySystem.instance.getInventory(KeyData.KeyKitchen) != null)
+        {
             StartCoroutine(openDoor());
             return;
-        //}
-        //NotificationUIController.instance.setContent(notifyString, timeWait);
-        //StartCoroutine(conversation());
+        }
+        NotificationUIController.instance.setContent(notifyString, timeWait);
+            StartCoroutine(conversation());
     }
 
     IEnumerator conversation()

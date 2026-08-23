@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
   m_Name: AfterOpenDialog
   m_EditorClassIdentifier: 
-  CharName: Niko
+  CharName: Chan
   CharAvatar: {fileID: 21300000, guid: 0a1924fdfb0321c489a56066b074ec4f, type: 3}
   lines:
   - ......

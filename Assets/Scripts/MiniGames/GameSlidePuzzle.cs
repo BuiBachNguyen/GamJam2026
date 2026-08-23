@@ -29,7 +29,10 @@ public class GameSlidePuzzle : MonoBehaviour
 
     private void Start()
     {
+        //shuffling = true;
         CreateGamePieces();
+
+        //StartCoroutine(WaitShuffle(Time.deltaTime));
     }
 
 
@@ -42,8 +45,8 @@ public class GameSlidePuzzle : MonoBehaviour
 
             IsSolved?.Invoke();
 
-            if (gameObject.activeInHierarchy)
-                StartCoroutine(WaitShuffle(0.5f));
+            //if (gameObject.activeInHierarchy)
+            //    StartCoroutine(WaitShuffle(0.5f));
         }
 
         // Input
@@ -66,6 +69,7 @@ public class GameSlidePuzzle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             this.gameObject.SetActive(false);
+            SystemControl.instance.removeAction();
         }
     }
 

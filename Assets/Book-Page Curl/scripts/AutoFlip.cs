@@ -23,6 +23,15 @@ public class AutoFlip : MonoBehaviour {
     void PageFlipped()
     {
         isFlipping = false;
+
+        if (ControledBook.matchingPicture != null)
+        {
+            // Kiểm tra đúng trang cuối VÀ chưa giải đố xong thì mới hiện
+            if (ControledBook.currentPage == ControledBook.TotalPageCount && !ControledBook.matchingPicture.isMatched)
+            {
+                ControledBook.matchingPicture.GetComponent<CanvasGroup>().alpha = 1;
+            }
+        }
     }
 	public void StartFlipping()
     {
@@ -45,6 +54,9 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage >= ControledBook.TotalPageCount) return;
         isFlipping = true;
+        if (ControledBook.matchingPicture != null)
+            ControledBook.matchingPicture.GetComponent<CanvasGroup>().alpha = 0;
+
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
@@ -59,6 +71,9 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage <= 0) return;
         isFlipping = true;
+        if (ControledBook.matchingPicture != null)
+            ControledBook.matchingPicture.GetComponent<CanvasGroup>().alpha = 0;
+
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;

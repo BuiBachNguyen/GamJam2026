@@ -1231,6 +1231,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1352357476}
+    - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
+      propertyPath: contentImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c0ba90e4e0bca54a83d1c8d2a596356, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (1)
@@ -2077,6 +2081,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1352357476}
+    - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
+      propertyPath: contentImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 08bac7f1709891948b2292cb7a8eb8e5, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (3)
@@ -31539,7 +31547,7 @@ MonoBehaviour:
     tra th\u1EE9 g\xEC \u0111\xF3 v\xE0o \u0111\u01B0\u1EE3c.]"
   afterString: "[\u0110\xE3 s\u1EED d\u1EE5ng tay n\u1EAFm c\u1EEDa.]"
   timeWait: 2
-  dialog: {fileID: 0}
+  dialog: {fileID: 11400000, guid: 408ce139c03c33647b42a4161bdd025e, type: 2}
 --- !u!61 &916058091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31897,6 +31905,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1352357476}
+    - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
+      propertyPath: contentImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 462a4e52a517a9545a58d16a44b105cf, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (4)
@@ -34939,6 +34951,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1352357476}
+    - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
+      propertyPath: contentImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 2aa5b5bcc9493af48a12a6318c62cdc4, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (2)
@@ -35723,7 +35739,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1757068059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37661,6 +37677,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1352357476}
+    - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
+      propertyPath: contentImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bb894d5d7d69cc4bb098db6b871c85a, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile

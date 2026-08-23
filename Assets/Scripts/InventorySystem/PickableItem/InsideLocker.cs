@@ -77,6 +77,8 @@ public class InsideLocker : PickableItem
 
         box.SetActive(true);
 
+        PlayerPrefs.SetInt("ExistBox", 1);
+
         fadeTransition.Fade();
 
         yield return new WaitForSeconds(1.5f);
