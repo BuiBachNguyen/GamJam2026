@@ -28,6 +28,7 @@ public class PCUIController : MonoBehaviour
     public GameObject OffScreenPanel;
     public GameObject PassPanel;
     public TextMeshProUGUI notifyText;
+    public GameObject OpenFolderPanel;
 
 
     public void setNotifyText(string txt)
@@ -41,6 +42,8 @@ public class PCUIController : MonoBehaviour
         PCPanel.SetActive(state);
         if (state)
         {
+            CloseOffScreen();
+            ClosePassPanel();
             SystemControl.instance.addAction();
         } else
         {
@@ -86,6 +89,18 @@ public class PCUIController : MonoBehaviour
         } else
         {
             OpenOffScreen();
+        }
+    }
+
+    public void showOpenFolder(bool state)
+    {
+        OpenFolderPanel.SetActive(state);
+        if (state)
+        {
+            OpenFolderPanel.GetComponent<CanvasGroup>().alpha = 0f;
+        } else
+        {
+            OpenFolderPanel.GetComponent<CanvasGroup>().alpha = 1f;
         }
     }
 }

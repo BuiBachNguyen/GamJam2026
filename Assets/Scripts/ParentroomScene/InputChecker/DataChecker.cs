@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class DataChecker : MonoBehaviour
@@ -9,9 +10,12 @@ public class DataChecker : MonoBehaviour
     public float timeWait = 1f;
     public void ValidateCode(string enteredCode)
     {
+        Debug.Log(enteredCode);
         if (enteredCode == correctCode)
         {
-            Debug.Log("Correct Pass");
+            PCUIController.instance.ClosePassPanel();
+            PCUIController.instance.showOpenFolder(true);
+            PCUIController.instance.OpenFolderPanel.GetComponent<CanvasGroup>().DOFade(1f, 1f);
         }
         else
         {

@@ -36,7 +36,7 @@ public class PC : PickableItem
         }
         havePicked = true;
         player.IsInteract = false;
-        GetComponent<Collider2D>().enabled = false;
+        TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
         DialogController.instance.playDialog(usePCDialog, () =>
         {
             StartCoroutine(openPC());
@@ -53,6 +53,7 @@ public class PC : PickableItem
 
         // mo panel va reset PC ve dong 
         animator.SetTrigger("Close");
+        havePicked = false;
         PCUIController.instance.showPCPanel(true);
     }
 }
