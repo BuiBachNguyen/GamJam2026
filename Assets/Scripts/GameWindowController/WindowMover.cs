@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class WindowMover : MonoBehaviour
 {
-#if UNITY_STANDALONE_WIN
 
     [DllImport("user32.dll")]
     private static extern IntPtr GetActiveWindow();
@@ -121,10 +120,10 @@ public class WindowMover : MonoBehaviour
         if (UpdateControler.Instance.ControlWindowMode)
         {
             Vector3 dir = Vector3.zero;
-            if (Input.GetKey(KeyCode.A)) dir += Vector3.left;
-            if (Input.GetKey(KeyCode.D)) dir += Vector3.right;
-            if (Input.GetKey(KeyCode.W)) dir += Vector3.up;
-            if (Input.GetKey(KeyCode.S)) dir += Vector3.down;
+            if (Input.GetKey(KeyCode.LeftArrow)) dir += Vector3.left;
+            if (Input.GetKey(KeyCode.RightArrow)) dir += Vector3.right;
+            if (Input.GetKey(KeyCode.UpArrow)) dir += Vector3.up;
+            if (Input.GetKey(KeyCode.DownArrow)) dir += Vector3.down;
 
             dir = dir.normalized;
 
@@ -306,5 +305,4 @@ public class WindowMover : MonoBehaviour
     {
         PlayerController.IsRemoteUsed -= OnRemoteUsed;
     }
-#endif
 }

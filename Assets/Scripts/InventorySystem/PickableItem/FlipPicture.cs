@@ -16,6 +16,8 @@ public class FlipPicture : MonoBehaviour
     private bool hasFinishedSpinning = false; // Đánh dấu đã xoay xong chưa
 
     private string notify = "[Phía sau tấm ảnh có hiện dòng chữ: 2408]";
+
+    public Dialog dialog;
     public GameObject panel;
 
     private void Start()
@@ -73,9 +75,11 @@ public class FlipPicture : MonoBehaviour
         {
             NotificationUIController.instance.setContent(notify, 2f);
 
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(3.5f);
 
             panel.SetActive(false);
+
+            DialogController.instance.playDialog(dialog);
 
             // co the them doan hoi thoai nho o day
 

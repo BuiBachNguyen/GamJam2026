@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Remote : PickableItem
 {
-    string tutorialString = "*Sử dụng R để mở tầm nhìn camera và WASD để di chuyển*";
+    string tutorialString = "*Sử dụng R để mở tầm nhìn camera và các phím mũi tên để di chuyển*";
     public Dialog dialog;
     private void OnEnable()
     {

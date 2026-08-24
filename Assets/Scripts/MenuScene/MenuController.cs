@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class MenuController : MonoBehaviour
     public GraphicRaycaster mainMenuRaycaster;
     public GameObject mainFirstSelected;
 
-    [Header("Settings Menu Settings")]
+    [Header("Settings Menu Settings")] // Panel này giờ có thể dùng làm Hướng dẫn (Tutorial)
     public GameObject settingsFirstSelected;
 
     [Header("Arrow Pointer Settings")]
@@ -25,19 +26,35 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        // Ẩn và khóa chuột hoàn toàn khi vào game
+        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+
         OpenMainMenu();
         PlayerPrefs.DeleteAll();
     }
 
     void Update()
     {
+        // Nhấn Esc để ẩn panel Setting/Hướng dẫn và quay lại Main Menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsPanel.activeSelf)
+            {
+                OpenMainMenu();
+            }
+        }
+
         if (!mainMenuPanel.activeSelf) return;
 
         GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
 
         if (currentSelected != null && currentSelected != lastSelected)
         {
-            AudioSceneController.instance.playArrowChanging();
+            if (AudioSceneController.instance != null)
+            {
+                AudioSceneController.instance.playArrowChanging();
+            }
             MoveArrowTo(currentSelected.GetComponent<RectTransform>());
             lastSelected = currentSelected;
         }
@@ -50,9 +67,6 @@ public class MenuController : MonoBehaviour
 
         if (mainMenuRaycaster != null)
             mainMenuRaycaster.enabled = false;
-
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(mainFirstSelected);
@@ -69,9 +83,6 @@ public class MenuController : MonoBehaviour
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
 
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
-
         EventSystem.current.SetSelectedGameObject(null);
         if (settingsFirstSelected != null)
         {
@@ -79,7 +90,15 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // --- CÁC HÀM XỬ LÝ MŨI TÊN 
+    // --- HÀM THOÁT GAME ---
+    // Bạn gán hàm này vào sự kiện OnClick() của nút Exit nhé
+    public void ExitGame()
+    {
+        Debug.Log("Đang thoát game...");
+        Application.Quit();
+    }
+
+    // --- CÁC HÀM XỬ LÝ MŨI TÊN ---
 
     private void MoveArrowTo(RectTransform targetRect)
     {

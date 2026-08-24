@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cd8cb78049a54408b2c3802d590e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctCode: 1234
+  correctCode: 2408
   inputSystem: {fileID: 511826932}
   timeWait: 1
 --- !u!4 &36637668
@@ -1234,7 +1234,7 @@ PrefabInstance:
     - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: contentImg
       value: 
-      objectReference: {fileID: 21300000, guid: 2c0ba90e4e0bca54a83d1c8d2a596356, type: 3}
+      objectReference: {fileID: 21300000, guid: a5a3de2add9a28c44b59fb3157c1de5b, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (1)
@@ -2084,7 +2084,7 @@ PrefabInstance:
     - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: contentImg
       value: 
-      objectReference: {fileID: 21300000, guid: 08bac7f1709891948b2292cb7a8eb8e5, type: 3}
+      objectReference: {fileID: 21300000, guid: e16328cf6f3ce5b48966ffdd336ec2f8, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (3)
@@ -6739,7 +6739,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 953f66131a06b6c4f95b39ce2156b021, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5cffb4c4d55a2743ab6c1b198474e1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7305,7 +7305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3ef3ce677ed52d43b2a651ae4d534af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad99c16cd0ac95f44846de580709546e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24708,7 +24708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5cffb4c4d55a2743ab6c1b198474e1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 953f66131a06b6c4f95b39ce2156b021, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24844,7 +24844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28089b87cf9f9a44293762af5097e51a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c08c7d9d97c6e54ca63df3e01ccfe8b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24919,7 +24919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e16328cf6f3ce5b48966ffdd336ec2f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f79d2ea2759ba204980db7a215756ed3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34476,7 +34476,7 @@ PrefabInstance:
     - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: contentImg
       value: 
-      objectReference: {fileID: 21300000, guid: 462a4e52a517a9545a58d16a44b105cf, type: 3}
+      objectReference: {fileID: 21300000, guid: f3ef3ce677ed52d43b2a651ae4d534af, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (4)
@@ -37807,7 +37807,7 @@ PrefabInstance:
     - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: contentImg
       value: 
-      objectReference: {fileID: 21300000, guid: 2aa5b5bcc9493af48a12a6318c62cdc4, type: 3}
+      objectReference: {fileID: 21300000, guid: 28089b87cf9f9a44293762af5097e51a, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile (2)
@@ -40608,7 +40608,7 @@ PrefabInstance:
     - target: {fileID: 6208732701054364043, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: contentImg
       value: 
-      objectReference: {fileID: 21300000, guid: 3bb894d5d7d69cc4bb098db6b871c85a, type: 3}
+      objectReference: {fileID: 21300000, guid: 5122585450eb2dc48a6c42c6cee57cd5, type: 3}
     - target: {fileID: 8283436464526246468, guid: 55ee751b0912770438780d7867327c11, type: 3}
       propertyPath: m_Name
       value: PicFile

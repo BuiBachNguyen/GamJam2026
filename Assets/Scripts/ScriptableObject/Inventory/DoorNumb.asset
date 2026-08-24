@@ -16,4 +16,4 @@ MonoBehaviour:
   inventoryDescription: "M\u1ED9t tay n\u1EAFm c\u1EEDa. D\u01B0\u1EDDng nh\u01B0
     b\u1ECB r\u01A1i ra t\u1EEB 1 c\xE1nh c\u1EEDa th\u1EADt."
   inventoryName: "Tay n\u1EAFm c\u1EEDa"
-  inventoryImage: {fileID: 0}
+  inventoryImage: {fileID: 21300000, guid: d1bc5dbdeaa40d9409b6443f4a9a89c3, type: 3}

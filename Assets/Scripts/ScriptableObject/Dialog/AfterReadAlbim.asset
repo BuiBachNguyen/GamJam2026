@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
-  m_Name: StartDialog
+  m_Name: AfterReadAlbim
   m_EditorClassIdentifier: 
-  CharName: "B\u1ED1 v\xE0 M\u1EB9"
-  CharAvatar: {fileID: 0}
+  CharName: Chan
+  CharAvatar: {fileID: 21300000, guid: 0a1924fdfb0321c489a56066b074ec4f, type: 3}
   lines:
-  - "B\u1ED1 m\u1EB9 \u0111i l\xE0m nh\xE9! \u0110\u1ED3 \u0103n s\xE1ng m\u1EB9
-    \u0111\u1EC3 d\u01B0\u1EDBi ph\xF2ng kh\xE1ch khi n\xE0o con d\u1EADy th\xEC
-    xu\u1ED1ng \u0103n nh\xE9. Y\xEAu con."
+  - "2408. Kh\xF4ng ph\u1EA3i l\xE0 ng\xE0y sinh c\u1EE7a m\xECnh sao. Th\u1EADt
+    k\xEC l\u1EA1."
+  - "M\xECnh ngh\u0129 n\xEAn t\xECm th\xEAm th\xF4ng tin tr\xEAn ph\xF2ng b\u1ED1
+    m\u1EB9."
   typeSpeed: 0.02
   soundEffect: {fileID: 0}

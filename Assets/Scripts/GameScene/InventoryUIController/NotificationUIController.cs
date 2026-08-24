@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using TMPro;
-using Unity.AppUI.UI;
 using UnityEngine;
 
 public class NotificationUIController : MonoBehaviour

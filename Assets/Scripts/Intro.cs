@@ -40,6 +40,8 @@ public class Intro : MonoBehaviour
             introImage.transform.localScale = Vector3.zero;
             introImage.gameObject.SetActive(false);
         }
+
+        AudioManager.Instance.PlayBGM(1);
     }
 
     public void play()
@@ -75,6 +77,8 @@ public class Intro : MonoBehaviour
                 // Nửa đầu: Phóng to từ 0 lên maxScale
                 imgSeq.Append(introImage.transform.DOScale(maxScale, halfTime).SetEase(Ease.OutQuad));
 
+                imgSeq.AppendInterval(2f);
+
                 // Nửa sau: Thu nhỏ dần về 0
                 imgSeq.Append(introImage.transform.DOScale(0f, halfTime).SetEase(Ease.InQuad));
             }
@@ -96,8 +100,11 @@ public class Intro : MonoBehaviour
         SceneManager.LoadScene(KeyData.MainBedroomScene);
         if (AudioManager.Instance != null)
         {
+            AudioManager.Instance.StopBGM();
             AudioManager.Instance.PlayBGM("BackgroundSound");
             AudioManager.Instance.PlaySFX(AudioClipNames.UIButton);
         }
     }
+
+
 }
