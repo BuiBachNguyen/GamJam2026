@@ -18,4 +18,9 @@ public static class AudioClipNames
     public static string SlideCard = "slidecard";
     public static string TurnPage = "page-turn-2";
     public static string Typing = "keyboard-typing-fast";
+    public static int LastSound = 24;
+    public static int HeartBead = 22;
+    public static int StairWalk = 23;
+    public static int LongWalk = 25;
+    public static int CutTape = 26;
 }

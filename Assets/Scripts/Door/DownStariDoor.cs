@@ -10,6 +10,8 @@ public class DownStariDoor : Door
         ScenePositionController.cameraScenePosition = KeyData.DownStairCamPos;
         ScenePositionController.playerScenePosition = KeyData.DownStairPos;
         ScenePositionController.currentCameraBounds = KeyData.HallBounds;
+        AudioManager.Instance.PlaySFX(AudioClipNames.StairWalk);
+        Debug.Log(AudioClipNames.StairWalk);
         //player.Facing = PlayerController.FacingDirection.Down;
         SceneManager.LoadScene(KeyData.LivingroomScene);
     }

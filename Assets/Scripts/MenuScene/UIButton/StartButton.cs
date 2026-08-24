@@ -6,6 +6,7 @@ public class StartButton : MonoBehaviour
 {
     Button btn;
     public GameObject introPanel;
+    public GameObject menuPanel;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class StartButton : MonoBehaviour
         introPanel.GetComponent<CanvasGroup>().alpha = 0f;
         introPanel.GetComponent<CanvasGroup>().DOFade(1f, 1f).OnComplete(() =>
         {
+            menuPanel.SetActive(false);
             introPanel.GetComponent<Intro>().play();
         });
         

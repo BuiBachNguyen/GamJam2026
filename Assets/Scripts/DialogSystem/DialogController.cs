@@ -42,6 +42,8 @@ public class DialogController : MonoBehaviour
 
     public GameObject nextButton;
 
+
+
     private void Start()
     {
         InitData();
@@ -52,6 +54,11 @@ public class DialogController : MonoBehaviour
         index = 0;
         isTyping = false;
         onCompleteDialog = null;
+    }
+
+    public void showNextButton(bool state)
+    {
+        nextButton.SetActive(state);
     }
 
     public void playDialog(Dialog dialogInfo, Action action = null)

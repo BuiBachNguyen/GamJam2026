@@ -70,7 +70,7 @@ public class Intro : MonoBehaviour
                 introImage.gameObject.SetActive(true);
 
                 // Chia đôi thời gian chờ của câu thoại hiện tại
-                float halfTime = 4f;
+                float halfTime = 6f;
 
                 Sequence imgSeq = DOTween.Sequence();
 

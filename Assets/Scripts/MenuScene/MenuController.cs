@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour
         Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
 
-        OpenMainMenu();
+        //OpenMainMenu();
         PlayerPrefs.DeleteAll();
     }
 

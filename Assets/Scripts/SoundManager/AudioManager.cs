@@ -162,6 +162,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayPlayerSFX(int clipIndex)
+    {
+        if (clipIndex >= 0 && clipIndex < sfxClips.Count)
+        {
+            playerSFXSource.PlayOneShot(sfxClips[clipIndex]);
+        }
+        else
+        {
+            Debug.LogWarning($"SFX index {clipIndex} out of range!");
+        }
+    }
+
     public bool IsPlayerSFXEnd()
     {
         return !playerSFXSource.isPlaying;
@@ -170,6 +182,16 @@ public class AudioManager : MonoBehaviour
     {
         return !sfxSource.isPlaying;
     }    
+
+    public void stopSFX()
+    {
+        sfxSource.Stop();
+    }    
+
+    public void stopPlayerSFX()
+    {
+        playerSFXSource.Stop();
+    }
     public void PlaySFX(int clipIndex)
     {
         if (clipIndex >= 0 && clipIndex < sfxClips.Count)

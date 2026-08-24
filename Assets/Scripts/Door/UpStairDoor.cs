@@ -8,6 +8,7 @@ public class UpStairDoor : Door
         ScenePositionController.cameraScenePosition = KeyData.UpStairCamPos;
         ScenePositionController.playerScenePosition = KeyData.UpStairPos;
         ScenePositionController.currentCameraBounds = KeyData.HallBounds;
+        AudioManager.Instance.PlaySFX(AudioClipNames.StairWalk);
         //player.Facing = PlayerController.FacingDirection.Down;
         SceneManager.LoadScene(KeyData.MainBedroomScene);
     }

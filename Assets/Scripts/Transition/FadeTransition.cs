@@ -28,6 +28,8 @@ public class FadeTransition : MonoBehaviour
         {
             gameObject.SetActive(false);
             SystemControl.instance.removeAction();
+            AudioManager.Instance.stopSFX();
+            AudioManager.Instance.stopPlayerSFX();
             });
     }
 

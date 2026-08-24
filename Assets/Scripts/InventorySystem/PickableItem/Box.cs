@@ -60,6 +60,7 @@ public class Box : PickableItem
         }
 
         // NẾU CÓ KÉO -> MỞ HỘP THÀNH CÔNG
+        AudioManager.Instance.PlaySFX(AudioClipNames.CutTape);
         havePicked = true; // Lúc này mới đánh dấu là đã dùng xong
         sp.sprite = open;
         StartCoroutine(fade());

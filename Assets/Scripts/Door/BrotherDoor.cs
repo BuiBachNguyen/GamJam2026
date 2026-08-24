@@ -14,6 +14,7 @@ public class BrotherDoor : Door
     public GameObject blurCanvas;
     public GameObject picture;
     public GameObject TheEndPanel;
+    public GameObject IngamePanel;
 
     public override void OnInteract()
     {
@@ -34,13 +35,23 @@ public class BrotherDoor : Door
     {
         yield return new WaitForSeconds(timeWait + 0.5f);
 
+        AudioManager.Instance.StopBGM();
+
+        AudioManager.Instance.PlayPlayerSFX(AudioClipNames.HeartBead);
+
+        IngamePanel.SetActive(false);
+
         base.OnInteract();
 
-        SystemControl.instance.addAction();
+        for (int i=0;i<2;i++)
+        {
+            SystemControl.instance.addAction();
+        }
 
         yield return new WaitForSeconds(2f);
 
-        AudioManager.Instance.StopBGM();
+
+        AudioManager.Instance.PlayBGM(2);
 
         blurCanvas.SetActive(true);
 
@@ -52,13 +63,39 @@ public class BrotherDoor : Door
             {
                 DialogController.instance.playDialog(FinalDialog, () =>
                 {
-                    DialogController.instance.playDialog(ParentDialog, () =>
-                    {
-                        TheEndPanel.SetActive(true);
-                    });
+                    
+                    StartCoroutine(parentConversation());
                 });
             });
         });
+    }
+
+    IEnumerator parentConversation()
+    {
+
+        AudioManager.Instance.StopBGM();
+
+        AudioManager.Instance.PlayPlayerSFX(AudioClipNames.LongWalk);
+
+        yield return new WaitForSeconds(2f); 
+
+        AudioManager.Instance.PlaySFX(AudioClipNames.LastSound);
+
+        yield return new WaitForSeconds(2.5f);
+
+        AudioManager.Instance.stopPlayerSFX();
+
+        DialogController.instance.playDialog(ParentDialog);
+
+        DialogController.instance.showNextButton(false);
+
+        yield return new WaitForSeconds(1f);
+
+        DialogController.instance.NextLine();
+
+        Debug.Log("Is running last sound");
+
+        TheEndPanel.SetActive(true);
     }
 
     IEnumerator conversation()
