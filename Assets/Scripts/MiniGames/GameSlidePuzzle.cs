@@ -32,7 +32,7 @@ public class GameSlidePuzzle : MonoBehaviour
         //shuffling = true;
         CreateGamePieces();
 
-        //StartCoroutine(WaitShuffle(Time.deltaTime));
+        StartCoroutine(WaitShuffle(Time.deltaTime));
     }
 
 

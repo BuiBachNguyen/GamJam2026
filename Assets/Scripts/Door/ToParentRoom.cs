@@ -16,21 +16,34 @@ public class ToParentRoom : Door
 
     public override void OnInteract()
     {
-        if(PuzzleIsSolve)
+        if (PlayerPrefs.GetInt("Puzzle") == 1)
         {
             base.OnInteract();
-        }
-        else
+        } else
         {
             TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
             DialogController.instance.playDialog(dialog, () =>
             {
                 Puzzle.SetActive(true);
                 SystemControl.instance.addAction();
-                
+
             });
-            
-        }    
+        }
+        //if (PuzzleIsSolve)
+        //{
+        //    base.OnInteract();
+        //}
+        //else
+        //{
+        //    TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
+        //    DialogController.instance.playDialog(dialog, () =>
+        //    {
+        //        Puzzle.SetActive(true);
+        //        SystemControl.instance.addAction();
+
+        //    });
+
+        //}    
         
     }
     public void OnSolved()
@@ -38,6 +51,8 @@ public class ToParentRoom : Door
         this.PuzzleIsSolve = true;
         Puzzle.SetActive(false);
         SystemControl.instance.removeAction();
+        PlayerPrefs.SetInt("Puzzle", 1);
+        base.OnInteract();
     }    
     private void Awake()
     {

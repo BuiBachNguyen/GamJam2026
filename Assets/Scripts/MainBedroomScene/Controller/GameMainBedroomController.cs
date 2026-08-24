@@ -36,11 +36,6 @@ public class GameMainBedroomController : GameController
         {
             InventorySystem.instance.addInventoryToUI(KeyData.BrotherPic);
         }
-        exist = InventorySystem.instance.saveInventory(new Inventory(KeyData.KeyLivingroom, 1));
-        if (!exist)
-        {
-            InventorySystem.instance.addInventoryToUI(KeyData.KeyLivingroom);
-        }
     } 
 
     public Collider2D getBounds(int id)

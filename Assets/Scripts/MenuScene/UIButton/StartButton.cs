@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 public class StartButton : MonoBehaviour
 {
     Button btn;
+    public GameObject introPanel;
 
     private void Awake()
     {
@@ -22,12 +24,13 @@ public class StartButton : MonoBehaviour
 
     void Enter()
     {
-        SceneManager.LoadScene(KeyData.MainBedroomScene);
-        if (AudioManager.Instance != null)
+        introPanel.SetActive(true);
+        introPanel.GetComponent<CanvasGroup>().alpha = 0f;
+        introPanel.GetComponent<CanvasGroup>().DOFade(1f, 1f).OnComplete(() =>
         {
-            AudioManager.Instance.PlayBGM("BackgroundSound");
-            AudioManager.Instance.PlaySFX(AudioClipNames.UIButton);
-        }    
+            introPanel.GetComponent<Intro>().play();
+        });
+        
     }
 
 
