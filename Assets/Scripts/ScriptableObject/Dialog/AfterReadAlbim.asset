@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
+  m_Name: AfterReadAlbim
+  m_EditorClassIdentifier: 
+  CharName: Chan
+  CharAvatar: {fileID: 21300000, guid: 0a1924fdfb0321c489a56066b074ec4f, type: 3}
+  lines:
+  - "2408. Kh\xF4ng ph\u1EA3i l\xE0 ng\xE0y sinh c\u1EE7a m\xECnh sao. Th\u1EADt
+    k\xEC l\u1EA1."
+  - "M\xECnh ngh\u0129 n\xEAn t\xECm th\xEAm th\xF4ng tin tr\xEAn ph\xF2ng b\u1ED1
+    m\u1EB9."
+  typeSpeed: 0.02
+  soundEffect: {fileID: 0}

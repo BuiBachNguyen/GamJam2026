@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00ec9130bbb0df4c9d0023fc1043a45, type: 3}
+  m_Name: StartDialog
+  m_EditorClassIdentifier: 
+  CharName: "B\u1ED1 v\xE0 M\u1EB9"
+  CharAvatar: {fileID: 0}
+  lines:
+  - "B\u1ED1 m\u1EB9 \u0111i l\xE0m nh\xE9! \u0110\u1ED3 \u0103n s\xE1ng m\u1EB9
+    \u0111\u1EC3 d\u01B0\u1EDBi ph\xF2ng kh\xE1ch khi n\xE0o con d\u1EADy th\xEC
+    xu\u1ED1ng \u0103n nh\xE9. Y\xEAu con."
+  typeSpeed: 0.02
+  soundEffect: {fileID: 0}

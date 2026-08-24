@@ -1,0 +1,121 @@
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
+
+public class MenuController : MonoBehaviour
+{
+    [Header("Panels")]
+    public GameObject mainMenuPanel;
+    public GameObject settingsPanel;
+
+    [Header("Main Menu Settings")]
+    public GraphicRaycaster mainMenuRaycaster;
+    public GameObject mainFirstSelected;
+
+    [Header("Settings Menu Settings")] // Panel này giờ có thể dùng làm Hướng dẫn (Tutorial)
+    public GameObject settingsFirstSelected;
+
+    [Header("Arrow Pointer Settings")]
+    public RectTransform arrowPointer;
+    public float xOffset = -50f;
+    public float moveDuration = 0.2f;
+
+    private GameObject lastSelected;
+
+    void Start()
+    {
+        // Ẩn và khóa chuột hoàn toàn khi vào game
+        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+
+        OpenMainMenu();
+        PlayerPrefs.DeleteAll();
+    }
+
+    void Update()
+    {
+        // Nhấn Esc để ẩn panel Setting/Hướng dẫn và quay lại Main Menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsPanel.activeSelf)
+            {
+                OpenMainMenu();
+            }
+        }
+
+        if (!mainMenuPanel.activeSelf) return;
+
+        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+
+        if (currentSelected != null && currentSelected != lastSelected)
+        {
+            if (AudioSceneController.instance != null)
+            {
+                AudioSceneController.instance.playArrowChanging();
+            }
+            MoveArrowTo(currentSelected.GetComponent<RectTransform>());
+            lastSelected = currentSelected;
+        }
+    }
+
+    public void OpenMainMenu()
+    {
+        mainMenuPanel.SetActive(true);
+        settingsPanel.SetActive(false);
+
+        if (mainMenuRaycaster != null)
+            mainMenuRaycaster.enabled = false;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(mainFirstSelected);
+
+        lastSelected = mainFirstSelected;
+        if (mainFirstSelected != null)
+        {
+            SnapArrowTo(mainFirstSelected.GetComponent<RectTransform>());
+        }
+    }
+
+    public void OpenSettings()
+    {
+        mainMenuPanel.SetActive(false);
+        settingsPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        if (settingsFirstSelected != null)
+        {
+            EventSystem.current.SetSelectedGameObject(settingsFirstSelected);
+        }
+    }
+
+    // --- HÀM THOÁT GAME ---
+    // Bạn gán hàm này vào sự kiện OnClick() của nút Exit nhé
+    public void ExitGame()
+    {
+        Debug.Log("Đang thoát game...");
+        Application.Quit();
+    }
+
+    // --- CÁC HÀM XỬ LÝ MŨI TÊN ---
+
+    private void MoveArrowTo(RectTransform targetRect)
+    {
+        if (targetRect == null || arrowPointer == null) return;
+        float targetY = targetRect.anchoredPosition.y;
+        float targetX = targetRect.anchoredPosition.x + xOffset;
+
+        arrowPointer.DOKill();
+        arrowPointer.DOAnchorPosY(targetY, moveDuration).SetEase(Ease.OutBack);
+        arrowPointer.DOAnchorPosX(targetX, moveDuration).SetEase(Ease.OutBack);
+    }
+
+    private void SnapArrowTo(RectTransform targetRect)
+    {
+        if (targetRect == null || arrowPointer == null) return;
+
+        arrowPointer.DOKill();
+        arrowPointer.anchoredPosition = new Vector2(targetRect.anchoredPosition.x + xOffset, targetRect.anchoredPosition.y);
+    }
+}
