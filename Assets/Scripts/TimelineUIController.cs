@@ -32,6 +32,11 @@ public class TimelineUIController : MonoBehaviour
 
     private void Start()
     {
+        if (KeyData.SkipIntro)
+        {
+            director.gameObject.SetActive(false);
+            return;
+        }
         // Fix lỗi Play On Awake: Nếu lúc Start mà Timeline đã chạy rồi thì ẩn UI luôn
         if (director != null && director.state == PlayState.Playing)
         {

@@ -81,6 +81,10 @@ public class FlipPicture : MonoBehaviour
 
             DialogController.instance.playDialog(dialog);
 
+            PlayerPrefs.SetInt("Album", 2);
+
+            EventController.canInteractWithAlbum?.Invoke(false);
+
             // co the them doan hoi thoai nho o day
 
         }

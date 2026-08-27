@@ -298,6 +298,10 @@ public class WindowMover : MonoBehaviour
         }
 
         SetWindowPos(hwnd, IntPtr.Zero, targetX, targetY, targetWidth, targetHeight, SWP_NOZORDER);
+
+        Screen.SetResolution(targetWidth, targetHeight, FullScreenMode.Windowed);
+        yield return null; // Đợi 1 frame để Unity cập nhật đồng bộ với Windows
+
         resizeIsRunning = false;
     }
 

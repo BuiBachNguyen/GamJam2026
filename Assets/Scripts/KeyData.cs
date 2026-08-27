@@ -8,6 +8,7 @@ public class KeyData : MonoBehaviour
     public static string LivingroomScene = "LivingRoomScene";
     public static string KitchenScene = "KitchenScene";
     public static string ParentBedroomScene = "ParentBedroomScene";
+    public static string MenuScene = "MenuScene";
 
     [Header("Position spawn")]
     public static string DownStairPos = "DownStairPos";
@@ -35,4 +36,6 @@ public class KeyData : MonoBehaviour
 
     [Header("Saved")]
     public static string StartConversation = "StartConversation";
+
+    public static bool SkipIntro = false;
 }

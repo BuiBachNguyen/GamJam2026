@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
-using Unity.VisualScripting;
 
 public class DialogController : MonoBehaviour
 {
@@ -49,6 +48,17 @@ public class DialogController : MonoBehaviour
         InitData();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (DialogPanel.activeSelf)
+            {
+                OnInteractDialog();
+            }
+        }
+    }
+
     void InitData()
     {
         index = 0;
@@ -79,7 +89,7 @@ public class DialogController : MonoBehaviour
         DialogPanel.SetActive(state);
         if (state)
         {
-            FocusOntarget(nextButton);
+            //FocusOntarget(nextButton);
             SystemControl.instance.addAction();
         }
         else

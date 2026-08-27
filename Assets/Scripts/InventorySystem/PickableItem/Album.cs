@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class Album : PickableItem
@@ -8,6 +9,20 @@ public class Album : PickableItem
 
     public GameObject panel;
 
+    private void OnEnable()
+    {
+        EventController.canInteractWithAlbum += onFinishAlbum;
+    }
+
+    private void OnDisable()
+    {
+        EventController.canInteractWithAlbum -= onFinishAlbum;
+    }
+
+    void onFinishAlbum(bool state)
+    {
+        canShowTuto = state;
+    }
 
     public override void Start()
     {
@@ -21,13 +36,28 @@ public class Album : PickableItem
         {
             sp.sprite = albumOpen;
         }
+        if (PlayerPrefs.GetInt("Album") == 2 )
+        {
+            // khong cho tuong tac
+            GetComponent<Collider2D>().enabled = false;
+        } else
+        {
+            GetComponent<Collider2D>().enabled = true;
+        }
     }
 
     public override void PickUpProcess(Collider2D collision)
     {
+        
         if (!player.IsInteract) return;
-        if (sp.sprite != albumClose) return; // dang mo thi khong cho tuong tac
-        GetComponent<Collider2D>().enabled = false;
+        player.IsInteract = false;
+        if (PlayerPrefs.GetInt("Album") == 2)
+        {
+            // khong cho tuong tac
+            GetComponent<Collider2D>().enabled = false;
+            return;
+        }
+        TutorialManager.instance.ShowTutorialInteraction(false, Vector3.zero);
         sp.sprite = albumOpen;
         // thuc hien ham gi do o day
         if (panel != null) //open nha
@@ -41,13 +71,13 @@ public class Album : PickableItem
     {
         if (panel != null)
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if(Input.GetKeyDown(KeyCode.Escape) && panel.activeSelf)
             {
-                PlayerPrefs.SetInt("Album", 0);
+                //PlayerPrefs.SetInt("Album", 0);
+                sp.sprite = albumClose;
                 panel.SetActive(false);
                 SystemControl.instance.removeAction();
             }
         } 
-            
     }
 }

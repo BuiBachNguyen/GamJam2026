@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BrotherDoor : Door
 {
@@ -15,6 +16,25 @@ public class BrotherDoor : Door
     public GameObject picture;
     public GameObject TheEndPanel;
     public GameObject IngamePanel;
+
+
+    bool havePress;
+    private void Start()
+    {
+        havePress = false;
+    }
+
+    private void Update()
+    {
+        if (Input.anyKeyDown && !havePress && TheEndPanel.activeSelf)
+        {
+            havePress = true;
+            KeyData.SkipIntro = true;
+            SceneManager.LoadScene(KeyData.MenuScene);
+        }
+    }
+
+
 
     public override void OnInteract()
     {
@@ -77,6 +97,8 @@ public class BrotherDoor : Door
 
         AudioManager.Instance.PlayPlayerSFX(AudioClipNames.LongWalk);
 
+        Coroutine shakeRoutine = StartCoroutine(FootstepShakeRoutine());
+
         yield return new WaitForSeconds(2f); 
 
         AudioManager.Instance.PlaySFX(AudioClipNames.LastSound);
@@ -84,6 +106,11 @@ public class BrotherDoor : Door
         yield return new WaitForSeconds(2.5f);
 
         AudioManager.Instance.stopPlayerSFX();
+
+        if (shakeRoutine != null)
+        {
+            StopCoroutine(shakeRoutine);
+        }
 
         DialogController.instance.playDialog(ParentDialog);
 
@@ -97,6 +124,32 @@ public class BrotherDoor : Door
 
         TheEndPanel.SetActive(true);
     }
+
+    IEnumerator FootstepShakeRoutine()
+    {
+        float timeBetweenSteps = 0.4f;
+        float shakeDuration = 0.3f;
+
+        // Rung theo trục X (trái/phải) và Y (lên/xuống)
+        // Ví dụ: rung trục Y mạnh hơn trục X một chút để mô phỏng bước đi tự nhiên hơn
+        float shakeX = 0.8f;
+        float shakeY = 1.2f;
+        Vector3 shakeStrength = new Vector3(shakeX, shakeY, 0);
+
+
+        while (true)
+        {
+            // Dừng nhịp rung cũ (nếu có) trước khi rung nhịp mới để camera không bị lệch
+            picture.transform.DOComplete();
+
+            // Thực hiện rung
+            picture.transform.DOShakePosition(shakeDuration, shakeStrength, vibrato: 1, randomness: 0, fadeOut: true);
+
+            // Đợi một khoảng thời gian bằng 1 nhịp bước chân rồi mới lặp lại
+            yield return new WaitForSeconds(timeBetweenSteps);
+        }
+    }
+
 
     IEnumerator conversation()
     {

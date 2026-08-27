@@ -31,6 +31,10 @@ public class MenuController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
 
         //OpenMainMenu();
+        if (KeyData.SkipIntro)
+        {
+            OpenMainMenu();
+        }
         PlayerPrefs.DeleteAll();
     }
 
